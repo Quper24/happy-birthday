@@ -31,11 +31,17 @@ html {
 
 body {
   font-family: 'Open Sans';
-  background: #fff1f8;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-bottom: 17px;
+}
+
+.women {
+  background-color: #fff1f8;
+}
+
+.men {
+  background-color: #EFF9FE;;
 }
 
 button {
@@ -47,11 +53,22 @@ img {
   height: auto;
 }
 
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .container {
   max-width: 1300px;
   padding: 0 20px;
   margin: 0 auto;
 }
+
 
 .header {
   position: relative;
@@ -65,18 +82,26 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
 }
 
 .header__button-change {
   width: 300px;
   height: 65px;
-  background: #c300c7;
   border-radius: 30px;
   border: none;
   font-weight: 700;
   font-size: 18px;
   color: #ffffff;
   margin-right: 30px;
+}
+
+.men .header__button-change{
+  background-color: #1178B2;
+}
+
+.women .header__button-change {
+  background-color: #c300c7;
 }
 
 .header__button-change:last-child {
@@ -108,9 +133,17 @@ img {
   background-image: url('../image/women.svg');
 }
 
+.men .header__button-gender_men {
+  border-color: #1178B2;
+}
+
+.women .header__button-gender_women {
+  border-color: #C300C7;
+}
+
 .card {
   flex-grow: 1;
-  padding: 32px 0;
+  padding: 32px 0 15px;
   display: flex;
   align-items: center;
 }
@@ -133,8 +166,37 @@ img {
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: max(3em, min(calc(100vw * 3 / 140), 6em));
-  font-family: 'Bad Script';
   line-height: 1.6;
+}
+
+.women .card__text {
+  font-family: 'Bad Script';
+}
+
+.men .card__text {
+  font-family: 'Open Sans';
+  font-weight: 700;;
+}
+
+.footer {
+  padding: 17px 0;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__social {
+  display: flex;
+  gap: 16px
 }
 
 @media (max-width: 880px) {
@@ -161,4 +223,17 @@ img {
     background-size: 30px;
     margin-right: 0;
   }
+}
+
+@media (max-width: 480px) {
+  .footer__container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer__contacts {
+    order: 1;
+  }
+
+
 }
