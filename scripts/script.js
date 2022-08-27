@@ -1,25 +1,30 @@
 const buttonMen = document.querySelector('.header__button-gender_men');
 const buttonWomen = document.querySelector('.header__button-gender_women');
+const buttonText = document.querySelector('.header__button-change_text');
+const buttonImage = document.querySelector('.header__button-change_back');
 const body = document.body;
 const cardImage = document.querySelector('.card__image');
 const cardText = document.querySelector('.card__text');
-const buttonText = document.querySelector('.header__button-change_text');
-const buttonImage = document.querySelector('.header__button-change_image');
 
 const state = {
-  gender: body.classList.contains('women') ? 'women' : 'men',
+  gender: document.body.classList.contains('women') ? 'women' : 'men',
 };
 
-const getRandomForArr = (arr) => {
-  const randomNumber = Math.floor(Math.random() * arr.length);
-  return arr[randomNumber];
+const getRandom = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const getData = () => fetch('db.json').then((response) => response.json());
+const getData = () => {
+  return fetch('db.json').then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+  });
+};
 
 const changeDOM = () => {
   if (state.photo.includes('black')) {
-    cardText.style.color = '#fff';
+    cardText.style.color = 'white';
   } else {
     cardText.style.color = '';
   }
@@ -30,8 +35,8 @@ const changeDOM = () => {
 
 const getDataToCard = () => {
   getData().then((data) => {
-    state.text = getRandomForArr(data.text[state.gender]);
-    state.photo = getRandomForArr(data.photo[state.gender]);
+    state.photo = getRandom(data.photo[state.gender]);
+    state.text = getRandom(data.text[state.gender]);
     changeDOM();
   });
 };
@@ -56,14 +61,14 @@ const changeToWomen = () => {
 
 const changeText = () => {
   getData().then((data) => {
-    state.text = getRandomForArr(data.text[state.gender]);
+    state.text = getRandom(data.text[state.gender]);
     changeDOM();
   });
 };
 
 const changeImage = () => {
   getData().then((data) => {
-    state.photo = getRandomForArr(data.photo[state.gender]);
+    state.photo = getRandom(data.photo[state.gender]);
     changeDOM();
   });
 };
@@ -72,6 +77,7 @@ buttonMen.addEventListener('click', changeToMen);
 buttonWomen.addEventListener('click', changeToWomen);
 buttonText.addEventListener('click', changeText);
 buttonImage.addEventListener('click', changeImage);
+
 getDataToCard();
 
 const cardWrapper = document.querySelector('.card__wrapper');
@@ -80,17 +86,13 @@ cardWrapper.addEventListener('dblclick', () => {
   const newWindow = window.open(
     '',
     '',
-    `width=840,height=520,
-    top=${screen.height / 2 - 520 / 2},
-    left=${screen.width / 2 - 840 / 2}`,
+    `width=840,height=520,top=${(screen.height / 2) - 520 / 2},
+          left=${(screen.width / 2) - (840 / 2)}`,
   );
-
 
   html2canvas(cardWrapper).then((canvas) => {
     canvas.style.maxWidth = '100%';
-    canvas.style.height = 'auto';
+    canvas.style.height = 'auto'
     newWindow.document.body.append(canvas);
   });
 });
-
-

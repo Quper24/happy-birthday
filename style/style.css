@@ -1,24 +1,28 @@
 @font-face {
   font-family: 'Bad Script';
+  font-style: normal;
   font-weight: 400;
-  src: url('../fonts/bad-script-v16-latin_cyrillic-regular.woff2')
-      format('woff2'),
-    url('../fonts/bad-script-v16-latin_cyrillic-regular.woff') format('woff');
+  src: local(''),
+    url('../fonts/bad-script-v16-latin_cyrillic-regular.woff2') format('woff2'),
+    url('../fonts/bad-script-v16-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
   font-family: 'Open Sans';
+  font-style: normal;
   font-weight: 400;
-  src: url('../fonts/open-sans-v29-latin_cyrillic-regular.woff2')
-      format('woff2'),
-    url('../fonts/open-sans-v29-latin_cyrillic-regular.woff') format('woff');
+  src: local(''),
+    url('../fonts/open-sans-v29-latin_cyrillic-regular.woff2') format('woff2'),
+    url('../fonts/open-sans-v29-latin_cyrillic-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
   font-family: 'Open Sans';
+  font-style: normal;
   font-weight: 700;
-  src: url('../fonts/open-sans-v29-latin_cyrillic-700.woff2') format('woff2'),
-    url('../fonts/open-sans-v29-latin_cyrillic-700.woff') format('woff');
+  src: local(''),
+    url('../fonts/open-sans-v29-latin_cyrillic-700.woff2') format('woff2'),
+    url('../fonts/open-sans-v29-latin_cyrillic-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 html {
@@ -34,6 +38,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  padding-bottom: 17px;
 }
 
 .women {
@@ -41,16 +46,11 @@ body {
 }
 
 .men {
-  background-color: #EFF9FE;;
+  background-color: #EFF9FE;
 }
 
 button {
   cursor: pointer;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 p {
@@ -63,45 +63,49 @@ ul {
   list-style: none;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   max-width: 1300px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
-
 .header {
-  position: relative;
-  z-index: 1;
   padding: 28px 0;
   background: #ffffff;
   box-shadow: 0px 1px 20px rgba(72, 3, 38, 0.07);
+  position: relative;
+  z-index: 1;
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
 }
 
 .header__button-change {
   width: 300px;
   height: 65px;
   border-radius: 30px;
-  border: none;
+  border: 0;
   font-weight: 700;
   font-size: 18px;
+  line-height: 25px;
   color: #ffffff;
   margin-right: 30px;
 }
 
-.men .header__button-change{
-  background-color: #1178B2;
-}
-
 .women .header__button-change {
   background-color: #c300c7;
+}
+
+.men .header__button-change {
+  background-color: #1178B2;
 }
 
 .header__button-change:last-child {
@@ -114,11 +118,18 @@ ul {
   box-shadow: 0px 0px 24px 4px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
   background-color: #ffffff;
-  border: 1px solid transparent;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 36px;
+  border: 1px solid transparent;
   margin-right: 20px;
+}
+
+.women .header__button-gender_women {
+  border-color: #C300C7;
+}
+
+.men .header__button-gender_men {
+  border-color: #1178B2;
 }
 
 .header__button-gender:last-child {
@@ -126,24 +137,16 @@ ul {
 }
 
 .header__button-gender_men {
-  background-image: url('../image/men.svg');
+  background-image: url(../image/men.svg);
 }
 
 .header__button-gender_women {
-  background-image: url('../image/women.svg');
-}
-
-.men .header__button-gender_men {
-  border-color: #1178B2;
-}
-
-.women .header__button-gender_women {
-  border-color: #C300C7;
+  background-image: url(../image/women.svg);
 }
 
 .card {
   flex-grow: 1;
-  padding: 32px 0 15px;
+  padding: 32px 0;
   display: flex;
   align-items: center;
 }
@@ -156,7 +159,7 @@ ul {
   position: relative;
   margin: auto;
   display: flex;
-  box-shadow: 0px 0px 50px rgba(96, 4, 50, 0.23);
+  filter: drop-shadow(0px 0px 50px rgba(96, 4, 50, 0.23));
   font-size: 3px;
 }
 
@@ -165,21 +168,17 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: max(3em, min(calc(100vw * 3 / 140), 6em));
-  line-height: 1.6;
+  font-size: max(1em, min(6em, calc(100vw * 3 / 140)));
+  line-height: 1.8;
 }
 
 .women .card__text {
   font-family: 'Bad Script';
+  font-style: italic;
 }
 
 .men .card__text {
-  font-family: 'Open Sans';
-  font-weight: 700;;
-}
-
-.footer {
-  padding: 17px 0;
+  font-weight: 700;
 }
 
 .footer__container {
@@ -196,7 +195,7 @@ ul {
 
 .footer__social {
   display: flex;
-  gap: 16px
+  gap: 16px;
 }
 
 @media (max-width: 880px) {
@@ -214,26 +213,36 @@ ul {
     width: 220px;
     height: 45px;
     font-size: 14px;
+    line-height: 1.2;
     margin-right: 0;
   }
 
   .header__button-gender {
+    margin-right: 0;
     width: 40px;
     height: 40px;
     background-size: 30px;
-    margin-right: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .header__button-wrapper{
+    flex-direction: column;
   }
 }
 
 @media (max-width: 480px) {
   .footer__container {
+    flex-wrap: wrap;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
   }
 
   .footer__contacts {
     order: 1;
   }
 
-
+  .footer__social {
+    margin-bottom: 30px;
+  }
 }
